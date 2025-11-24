@@ -9,7 +9,7 @@ export default function CustomThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">("dark");
 
   const theme = useMemo(
     () =>
@@ -17,8 +17,8 @@ export default function CustomThemeProvider({
         palette: {
           mode,
           primary: {
-            main: "#8B6F47", // Light brown
-            dark: "#5A4A31", // Darker brown for footer
+            main: "#82ABA1", // Light brown
+            dark: "#82ABA1", // Darker brown for footer
           },
           secondary: {
             main: "#FFFFFF", // White

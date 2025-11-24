@@ -29,7 +29,7 @@ const LOGO_IMAGE = "/images/logo.png";
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const title = "Argenta 3D Teknoloji";
+  const title = "MEGA VOLT";
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { toggleTheme } = React.useContext(ThemeContext);
@@ -60,8 +60,8 @@ export default function DrawerAppBar(props: Props) {
         alignItems="center"
         sx={{ my: 2, mx: 2 }}>
         <Avatar
-          alt="Argenta 3D Teknoloji"
-          src="/globe.svg"
+          alt="MEGA VOLT"
+          src="/images/logo.png"
           sx={{ width: 36, height: 36 }}
         />
         <Typography variant="h6" sx={{ my: 2, textAlign: "start" }}>
@@ -105,16 +105,13 @@ export default function DrawerAppBar(props: Props) {
       <Toolbar>
         <Image
           src={LOGO_IMAGE}
-          alt="Argenta 3D Teknoloji"
+          alt="MEGA VOLT"
           width={50}
           height={50}
           style={{ cursor: "pointer", borderRadius: "800px" }}
           onClick={() => router.push("/")}
         />
         <Box sx={{ flexGrow: 1 }} />
-        <IconButton onClick={toggleTheme} sx={{ mr: 2, color: "white" }}>
-          {theme.palette.mode === "light" ? "🌙" : "☀️"}
-        </IconButton>
         {isMobile ? (
           <>
             <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>

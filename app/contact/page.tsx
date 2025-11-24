@@ -16,36 +16,82 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Contact() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  // const searchParams = useSearchParams();
-  const topic: string = "";
-  const [formData, setFormData] = useState({
-    service: topic,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: topic
-      ? `Interested in ${topic.charAt(0).toUpperCase() + topic.slice(1)}`
-      : "",
-    agree: false,
-  });
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Stub: Send to /api/contact (configure with your email/SMTP later)
-    alert("Form submitted! Check console for demo.");
-    console.log(formData);
-  };
+    // const searchParams = useSearchParams();
+    const topic: string = "";
+    const [formData, setFormData] = useState({
+      service: topic,
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      message: topic
+        ? `Interested in ${topic.charAt(0).toUpperCase() + topic.slice(1)}`
+        : "",
+      agree: false,
+      companyname: "megavolt",
+    });
+    const [status, setStatus] = useState<{
+      success: boolean;
+      message: string;
+    } | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      const data = {
+        email: formData.email,
+        message: formData.message,
+        name: formData.firstName + " " + formData.lastName,
+        service: formData.service,
+        companyname: "megavolt",
+      };
+      console.log(data);
+      try {
+        const response = await fetch(
+          "https://email-xi-pearl.vercel.app/api/send-email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        const result = await response.json();
+        setStatus(result);
+        alert(result.message); // Matches your original alert-based feedback
+        setFormData({
+          service: topic,
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: topic
+            ? `Interested in ${topic.charAt(0).toUpperCase() + topic.slice(1)}`
+            : "",
+          agree: false,
+          companyname: "megavolt",
+        });
+      } catch (error: any) {
+        setStatus({
+          success: false,
+          message: error.message || "Failed to send request",
+        });
+        alert("Error: " + error.message);
+      }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value, type, checked } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    };
+
 
   return (
     <Box
@@ -68,11 +114,14 @@ export default function Contact() {
               sx={{ display: isMobile ? "none" : "block" }}
               width={isMobile ? 2 / 2 : 1 / 2}>
               <Typography paragraph>
-                Address: 1 Nolu, Bostanci Mahallesi Nasip 2 Nolu Sokak No: 17
-                Ortahisar / Trabzon, Turkey
+                Address: KURTULUŞ МАН. SALİH AYDIN SK. NO: 24А ORTAHİSAR /
+                TRABZON / 61040
               </Typography>
-              <Typography paragraph>Phone: +90(538)4439685</Typography>
-              <Typography paragraph>Email: office@argentatek.com</Typography>
+              <Typography paragraph>
+                <b>Email : </b>post@megavolt.com.tr
+              </Typography>
+              {/* <Typography paragraph>Phone: +90(538)4439685</Typography>
+              <Typography paragraph>Email: office@argentatek.com</Typography> */}
             </Grid>
             <Grid width={isMobile ? 2 / 2 : 1 / 2}>
               <Box
@@ -142,7 +191,7 @@ export default function Contact() {
                   label="I confirm I am over 18 and agree to terms"
                 />
                 <Button type="submit" variant="contained">
-                  Send Message
+                  Send a Request
                 </Button>
               </Box>
             </Grid>
@@ -150,11 +199,14 @@ export default function Contact() {
               sx={{ display: isMobile ? "block" : "none", mt: 5 }}
               width={isMobile ? 2 / 2 : 1 / 2}>
               <Typography paragraph>
-                Address: 1 Nolu, Bostanci Mahallesi Nasip 2 Nolu Sokak No: 17
-                Ortahisar / Trabzon, Turkey
+                Address: KURTULUŞ МАН. SALİH AYDIN SK. NO: 24А ORTAHİSAR /
+                TRABZON / 61040
               </Typography>
-              <Typography paragraph>Phone: +90(538)4439685</Typography>
-              <Typography paragraph>Email: office@argentatek.com</Typography>
+              <Typography paragraph>
+                <b>Email : </b>post@megavolt.com.tr
+              </Typography>
+              {/* <Typography paragraph>Phone: +90(538)4439685</Typography>
+              <Typography paragraph>Email: office@argentatek.com</Typography> */}
             </Grid>
           </Grid>
         </motion.div>

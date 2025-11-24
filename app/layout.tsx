@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Argenta 3D Teknoloji",
+  title: "MEGA VOLT",
   description: "Your trusted partner for industrial equipment and spare parts.",
 };
 

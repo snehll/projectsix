@@ -26,7 +26,7 @@ const SERVICES = [
     img: "/images/sparepart.jpg",
   },
   {
-    title: "Purchase of Used Equipment",
+    title: "Purchase of Used Equipments",
     desc: "We procure high-quality used and surplus industrial equipment, including generators and turbines, offering cost savings without compromising on quality. Our team assesses condition and provides fair offers for your decommissioned assets.",
     img: "/images/equipments.png",
   },
@@ -37,7 +37,7 @@ const SERVICES = [
   },
   {
     title: "Logistics Service",
-    desc: "Expert international logistics for industrial equipment via road, sea, and air. Our experienced team finds efficient, cost-effective solutions for global delivery, ensuring safe and timely arrival for your spare parts and machinery.",
+    desc: "Global transport management with route optimisation, insurance and real-time updates. Clients receive firm dates, clear costs and equipment ready to work.",
     img: "/images/logistics.jpg",
   },
 ];
@@ -69,9 +69,10 @@ export default function Services() {
               color: theme.palette.text.secondary,
               px: isMobile ? 0 : 35,
             }}>
-            Comprehensive solutions for your industrial equipment needs,
-            specializing in spare parts for generators and turbines with turnkey
-            procurement and custom selection.
+            Fast and accurate sourcing of new and refurbished machinery. Support
+            with customs and certification paperwork. Secure financial
+            arrangements that simplify cross-border deals. A dedicated manager
+            who oversees the whole process until delivery.
           </Typography>
         </motion.div>
         {SERVICES.map((service, index) => (
