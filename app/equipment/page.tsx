@@ -54,6 +54,31 @@ const EQUIPMENT = [
     desc: "Pre-packaged kits for generators, turbines, engines, and compressors, ensuring quick maintenance and lifecycle support.",
     img: "/images/sparepart.jpg",
   },
+  {
+    title: "Adaptive Mixer",
+    desc: "High-performance adaptive mixers for versatile processing.",
+    img: "/images/adaptivemixer.webp",
+  },
+  {
+    title: "Hydro-Ejectors",
+    desc: "Efficient fluid handling and vacuum generation.",
+    img: "/images/hydro-ejectors.webp",
+  },
+  {
+    title: "Jet Mixers",
+    desc: "Advanced technology for liquid homogenization.",
+    img: "/images/jet-mixers.webp",
+  },
+  {
+    title: "Mixing Accessories",
+    desc: "Optimization tools for blending workflows.",
+    img: "/images/mixing-accessories.webp",
+  },
+  {
+    title: "Single Speed Mixer",
+    desc: "Robust and reliable standard mixers.",
+    img: "/images/single-speed-mixer.webp",
+  },
 ];
 
 export default function Equipment() {
@@ -85,9 +110,9 @@ export default function Equipment() {
             and competitive pricing.
           </Typography>
         </motion.div>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent="center">
           {EQUIPMENT.map((equip, i) => (
-            <Grid key={i}>
+            <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
